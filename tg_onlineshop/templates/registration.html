@@ -15,10 +15,12 @@
         <input type="text" id="tg_username" name="tg_username" placeholder="Введите ник телеграм " required>
         <input type="tel" id="phone" name="phone" placeholder="* +7 906 123 45 67" autocomplete="tel" pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" required>
         <textarea id="address" name="address" placeholder="* пгт. Приволжский, ул.Есенина, д.25, кв. 14" required></textarea>
+        <label>Фото</label>
         <input type="file" id="photo" name="photo" accept="image/*" required>
         * - обязательно для заполнения
       </form>
     </div>
+    <script src={% static "js/registration.js" %}></script>
 {% endblock %}
 
 {% block footer %}

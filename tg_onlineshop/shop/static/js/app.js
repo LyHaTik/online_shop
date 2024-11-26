@@ -15,8 +15,7 @@ function updateClock() {
 }
 // Обновляем каждую секунду
 setInterval(updateClock, 1000);
-// Вызываем функцию
-//updateClock();
+
 
 // ЗАКРЫТЬ
 function tgClose() {
@@ -25,6 +24,7 @@ function tgClose() {
 
 
 let isPopupOpen = false; // Флаг состояния всплывающего окна
+let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
 async function placeOrder() {
     if (Object.keys(cart).length === 0) {
@@ -132,7 +132,7 @@ function toCart() {
 
 function updateBasketImage() {
     const buttonBasket = document.getElementById('button-basket');
-    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    //let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
     if (buttonBasket) {
         buttonBasket.setAttribute('class', 'close-button');

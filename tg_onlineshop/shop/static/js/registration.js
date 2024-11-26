@@ -37,7 +37,8 @@ async function sendData() {
             tg.showAlert(`✅ Регистрация успешна, ${result.name}!`);
             window.location.href = '/';
         } else {
-            tg.showAlert(`⛔️ Ошибка: ${result.list_error}`);
+            console.log('result', result)
+            tg.showAlert(`⛔️ Ошибка: ${result.errors}`);
         }
     } catch (error) {
         tg.showAlert(`Ошибка отправки данных: ${error.message}`);

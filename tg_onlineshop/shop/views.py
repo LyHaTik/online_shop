@@ -70,7 +70,7 @@ def register_user(request):
         list_error.append("User with this Telegram ID already exists.")
 
     # Дополнительные проверки
-    if phone and (not phone.isdigit() or len(phone) < 10):
+    if len(phone) < 10:
         list_error.append("Invalid phone number format.")
     if tg_username and len(tg_username) > 50:
         list_error.append("Telegram username is too long.")

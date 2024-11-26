@@ -1,8 +1,5 @@
 const storeId = document.getElementById('store-name').dataset.storeId;
 
-// Загружаем данные корзины из localStorage
-let cart = JSON.parse(localStorage.getItem('cart')) || {};
-
 // Храним выбранные товары и их количество
 const selectedProducts = {};
 const productPrices = {};
@@ -10,7 +7,7 @@ const productPrices = {};
 
 // Инициализация количества товаров на странице
 document.addEventListener('DOMContentLoaded', () => {
-
+    
     // Находим все кнопки с определенным классом
     const buttons = document.querySelectorAll('.item-button-about');
 
@@ -48,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 quantityElement.textContent = cart[storeId][productId];
             }
     })};
-
     updateBasketImage();
 });
 

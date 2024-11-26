@@ -1,5 +1,3 @@
-let cart = JSON.parse(localStorage.getItem('cart')) || {};
-
 async function loadCart() {
     const cartItems = document.getElementById('cart-items');
     cartItems.innerHTML = '';

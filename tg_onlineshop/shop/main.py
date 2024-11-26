@@ -20,7 +20,7 @@ async def start(message: types.Message):
         first_name = message.chat.first_name
     except:
         first_name = 'Друг'
-    web_app = types.WebAppInfo(url="https://3210-77-40-22-160.ngrok-free.app")
+    web_app = types.WebAppInfo(url="https://bf5e-77-40-15-79.ngrok-free.app")
     menu_button = types.MenuButtonWebApp(f"Куда пойдем, {first_name} ? 🚶‍♂️", web_app=web_app)
     await bot.set_chat_menu_button(menu_button=menu_button)
 

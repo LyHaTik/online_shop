@@ -1,7 +1,6 @@
 let tg = Telegram.WebApp;
 tg.expand();
 
-
 window.onload = async () => {
     // ПРОВЕРКА ПОЛЬЗОВАТЕЛЯ
     const initDataUnsafe = tg.initDataUnsafe;

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+      <h2>Регистрация</h2>
+      <button onclick="tgClose()" class="close-button">x</button>
+{% endblock %}
+
+{% block content %}
+    <div class="content-reg">
+      <p>Зарегистрироваться необходимо при первом посещении, это позволяет нам сделать площадку более удобной для Вас.</p>
+      <p>Ваш id: <span id="user-id"></span> Спасибо!</p>
+      <form id="registrationForm" enctype="multipart/form-data">
+        <input type="text" id="name" name="name" placeholder="* Введите ваше имя" required>
+        <input type="text" id="tg_username" name="tg_username" placeholder="Введите ник телеграм " required>
+        <input type="tel" id="phone" name="phone" placeholder="* +7 906 123 45 67" autocomplete="tel" pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}" required>
+        <textarea id="address" name="address" placeholder="* пгт. Приволжский, ул.Есенина, д.25, кв. 14" required></textarea>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+        * - обязательно для заполнения
+      </form>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <a href="https://t.me/BotMaster_Alex_A" target="_blank">@BotMaster_Alex_A</a>
+    <button class="order-button" type="submit" onclick="sendData()">Ok</button>
+{% endblock %}

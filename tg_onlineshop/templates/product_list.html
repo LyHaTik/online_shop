@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<h2>{{ store }}</h2>
+<span>
+    <a href="{% url 'store_list' %}"><button class="close-button">назад</button></a>
+    <button onclick="tgClose()" class="close-button">X</button>
+</span>
+{% endblock %}
+
+{% block content %}
+<h2 id="store-name" data-store-id="{{ store.id }}"></h2>
+
+<!-- Фильтр по категориям товаров -->
+<form method="get" id="category-filter">
+    <select class="category-filter" id="product-category-select">
+        <option value="">Все</option>
+        {% for category in product_categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+</form>
+<!-- Список товаров -->
+<div class="content" id="products-list">
+    {% for product in products %}
+        <div class="item" data-id="{{ product.id }}">
+            <button class="item-button-about" data-description="{{ product.description }}" data-name="{{ product.name }}">
+                <img class="item-img" src="{{ product.image.url }}" alt="{{ product.name }}"/>
+            </button>
+            <div class="item-title">{{ product.name }} {{ product.price }} p.</div>
+            <div class="item-controls">
+                <button class="item-button" onclick="updateQuantity({{ store.id }}, {{ product.id }}, '{{ product.price|floatformat:2 }}', -1)">-</button>
+                <span class="item-quantity" id="quantity-{{ product.id }}">0</span>
+                <button class="item-button" onclick="updateQuantity({{ store.id }}, {{ product.id }}, '{{ product.price|floatformat:2 }}', 1)">+</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<script src={% static "js/product_list.js" %}></script>
+{% endblock %}
+
+{% block footer %}
+<button id="button-basket"></button>
+<h3 id="total"></h3>
+<button class="order-button" type="submit" onclick="placeOrder()">Заказть</button>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<h2>Корзина</h2>
+<nav>
+    <a href="{% url 'store_list' %}"><button class="close-button">на Главную</button></a>
+    <button onclick="tgClose()" class="close-button">X</button>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="content-cart">
+    <ul id="cart-items"></ul>
+</div>
+
+{% if orders %}
+    <div class="content-cart">
+    {% for order in orders %}
+        {% if not order.completed %}
+            Выполняется
+            <li class='store-cart'>
+                Заказ №{{ order.id }} | {{ order.store.name }}
+            </li>
+            {% for item in order.orderitem_set.all %}
+                <li class='product-item-cart'>     
+                    <img class="logo-product-basket" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    {{ item.product.name }} {{ item.product.price }} ₽
+                    <span class="item-quantity" id="quantity-{{ item.product.id }}">{{ item.quantity }} шт.</span>
+                </li>
+            {%  if frorloop.last %} <br>_</br>{% endif%}
+            {% endfor %}
+        {% else %}
+            Исполненый заказ
+            <li class='store-history-cart'>
+                Заказ №{{ order.id }} | {{ order.store.name }}
+            </li>
+            {% for item in order.orderitem_set.all %}
+                <li class='product-history-item-cart'>     
+                    <img class="logo-history-product-basket" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    {{ item.product.name }} {{ item.product.price }} ₽
+                    <span class="item-quantity" id="quantity-{{ item.product.id }}">{{ item.quantity }} шт.</span>
+                </li>
+            {%  if frorloop.last %} <br>_</br>{% endif%}
+            {% endfor %}
+        {% endif%}
+    {% endfor %}
+    </div>
+    <script src={% static "js/cart.js" %}></script>
+{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+<h3 id="total"></h3>
+<button class="order-button" type="submit" onclick="placeOrder()">Заказть</button>
+{% endblock %}

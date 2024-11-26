@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<h3>Куда пойдем ?</h3>
+<button onclick="tgClose()" class="close-button">X</button>
+{% endblock %}
+
+{% block content %}
+<form method="get" id="category-filter">
+    <select class="category-filter" id="store-category-select">
+        <option value="">Все</option>
+        {% for category in store_categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+</form>
+<div class="content" id="stores-list">
+    {% for store in stores %}
+        <div class="item-shop" data-id="{{ store.id }}">
+            {% if store.open_close and store.on_main %}
+                <a href="{% url 'product_list' store.id %}">
+                    <img class="item-img" src={{ store.image.url }} alt={{ store.name }}>
+                </a>
+                <a href="{% url 'product_list' store.id %}">
+                    <div class="item-shop-title">
+                        {{ store.name }} |
+                        {{ store.category }}
+                        <span>{{ store.opening_time|date:"H:i" }}-{{ store.closing_time|date:"H:i" }}</span>
+                    </div>
+                </a>
+            {% else %}
+                <img class="item-img" src="{% static 'img/close.avif' %}">
+                <div class="item-shop-title">{{ store.name }} | {{ store.category }} 
+                    <span class="close-text">Закрыто</span>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+<script src={% static "js/store_list.js" %}></script>
+{% endblock %}
+
+{% block footer %}
+<button id="button-basket"></button>
+<a href="https://t.me/BotMaster_Alex_A" target="_blank">@BotMaster_Alex_A</a>
+{% endblock %}

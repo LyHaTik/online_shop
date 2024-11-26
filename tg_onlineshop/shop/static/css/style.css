@@ -1,0 +1,366 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+main {
+	margin-top: 60px; /* Отступ под header */
+	margin-bottom: 70px; /* Отступ под footer */
+	padding: 20px;
+	background-color: var(--tg-theme-bg-color);
+	min-height: 100vh; /* Минимальная высота экрана */
+}
+
+header {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--tg-theme-section-bg-color);
+    color: var(--tg-theme-text-color);
+	padding: 10px;
+	font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000; /* Чтобы он всегда был над основным контентом */
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	background-color: var(--tg-theme-bottom-bar-bg-color);
+	color: var(--tg-theme-text-color);
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 1000; /* Тот же приоритет */
+}
+
+.img-basket {
+	height: 40px;
+	width: 40px;
+	background-color: transparent;
+}
+
+.logo-store-basket {
+	height: 30px;
+	width: 30px;
+	background-color: transparent;
+	border-radius: 10px;
+}
+
+.logo-store-basket:hover {
+	transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-product-basket {
+	height: 30px;
+	width: 30px;
+	background-color: transparent;
+	border: 1px solid var(--tg-theme-button-text-color);
+	border-radius: 15px;
+}
+
+.content {
+	flex: 1;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+	padding: 5px;
+	overflow-y: auto;
+}
+
+.item {
+	background: var(--tg-theme-link-color);
+	position: relative; /* Чтобы описание позиционировалось относительно блока товара */
+	text-align: center;
+	display: flex;
+    flex-direction: column;
+	height: 200px;
+	border: 1px solid var(--tg-theme-button-text-color);
+	border-radius: 30px;
+	padding: 10px;
+	color: var(--tg-theme-button-text-color);
+	overflow: hidden; /* Прячем края изображения */
+}
+
+.item-title {
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 120px;
+}
+
+.item-controls {
+	margin-top: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.item-button-about {
+	position: absolute;
+    max-height: 110px;
+    width: 110px;
+	left: 16%; /* Сдвигает к центру */
+	border: none;
+    background: var(--tg-theme-link-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-img {
+	margin-top: 0;
+    max-height: 110px;
+    max-width: 110px;
+	border: 1px solid var(--tg-theme-button-text-color);
+	border-radius: 20px;
+    object-fit: contain; /* Уместить изображение внутри кнопки */
+}
+
+.item-button {
+	width: 35px;
+    height: 35px;
+	font-size: 14px;
+	background-color: #ff9800;
+	color: var(--tg-theme-button-text-color);
+	border: 1px solid var(--tg-theme-button-text-color);
+	border-radius: 15px;
+	cursor: pointer;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-button:hover {
+	background-color: var(--tg-theme-button-color);
+	transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.item-quantity {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.order-button {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #ff9800;
+	color: var(--tg-theme-button-text-color);
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-button:hover {
+	background-color: var(--tg-theme-button-color);
+	transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+	padding: 5px 10px;
+	font-size: 16px;
+	background-color: transparent;
+	color: var(--tg-theme-link-color);
+	border: none;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+.total {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.item-shop {
+	margin-top: 0;
+	position: relative;
+	text-align: center;
+	display: flex;
+    flex-direction: column;
+	justify-content: flex-end; /* Заголовок размещается внизу */
+	align-items: center;
+	height: 200px;
+	background-color: var(--tg-theme-bg-color);
+	border: 1px solid var(--tg-theme-link-color);
+	border-radius: 30px;
+	padding: 10px;
+	color: var(--tg-theme-section-header-text-color);
+	overflow: hidden; /* Прячем края изображения */
+}
+
+.item-shop-title {
+	font-size: 16px;
+    font-weight: bold;
+    margin-top: auto; /* Отодвигает заголовок вниз */
+    margin-bottom: 10px; /* Добавляет отступ снизу */
+    text-align: center;
+}
+
+.category-filter {
+	width: 100%;
+	height: 30px;
+	border: 1px solid var(--tg-theme-link-color);
+	border-radius: 5px;
+	text-align: center;
+	background-color: var(--tg-theme-section-bg-color);
+	color: var(--tg-theme-section-header-text-color);
+}
+
+.close-text {
+	color: var(--tg-theme-destructive-text-color);
+}
+
+/* Стили для registration.html */
+form {
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: var(--tg-theme-bg-color);
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+input, textarea {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid var(--tg-theme-link-color);
+	border-radius: 4px;
+}
+
+.content-reg {
+	flex: 1;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	color: var(--tg-theme-text-color);
+	gap: 10px;
+	padding: 10px;
+	overflow-y: auto;
+}
+
+.content-cart {
+	margin-bottom: 50px;
+	flex: 1;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	color: var(--tg-theme-text-color);
+	gap: 10px;
+	padding: 5px;
+	overflow-y: auto;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.store-cart {
+	background-color: #ff9800;
+	width: 50%;
+	border: 1px solid #ddd;
+	display: flex; /* Делаем элемент гибким */
+	border-radius: 8px;
+	padding-top: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	justify-content: space-between; /* Равномерное распределение содержимого */
+	align-items: center;
+	margin-top: 7px;
+	margin-bottom: -5px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+	z-index: 10; /* Устанавливаем более высокий z-index */
+    position: relative; /* Указываем, что z-index применяется именно к этому блоку */
+}
+
+.store-cart:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-item-cart {
+	background: var(--tg-theme-link-color);
+    padding: 15px;
+    border: 1px solid var(--tg-theme-button-text-color);
+    border-radius: 8px;
+    display: flex; /* Делаем элемент гибким */
+    justify-content: space-between; /* Равномерное распределение содержимого */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    width: 100%; /* Растягиваем элемент на всю ширину */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+	z-index: 1; /* Устанавливаем меньший z-index */
+    position: relative; /* Указываем, что z-index применяется именно к этому блоку */
+}
+
+.product-item-cart:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.store-history-cart {
+	background-color: var(--tg-theme-subtitle-text-color);
+	width: 50%;
+	border: 1px solid #ddd;
+	display: flex; /* Делаем элемент гибким */
+	border-radius: 8px;
+	padding-top: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	justify-content: space-between; /* Равномерное распределение содержимого */
+	align-items: center;
+	margin-top: 7px;
+	margin-bottom: -5px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+	z-index: 10; /* Устанавливаем более высокий z-index */
+    position: relative; /* Указываем, что z-index применяется именно к этому блоку */
+}
+
+.store-history-cart:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-history-item-cart {
+	background: var(--tg-theme-subtitle-text-color);
+    padding: 15px;
+    border: 1px solid var(--tg-theme-button-text-color);
+    border-radius: 8px;
+    display: flex; /* Делаем элемент гибким */
+    justify-content: space-between; /* Равномерное распределение содержимого */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    width: 100%; /* Растягиваем элемент на всю ширину */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+	z-index: 1; /* Устанавливаем меньший z-index */
+    position: relative; /* Указываем, что z-index применяется именно к этому блоку */
+}
+
+.product-history-item-cart:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-history-product-basket {
+	height: 30px;
+	width: 30px;
+	background-color: transparent;
+	border: 1px solid var(--tg-theme-button-text-color);
+	border-radius: 15px;
+	filter: grayscale(100%);
+}
